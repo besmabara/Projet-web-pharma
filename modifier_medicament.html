@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Modifier un Médicament</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+    h2 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 250px;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkorange;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Modifier un médicament</h2>
+
+  <form id="form-modif">
+    <label for="nom">Nom du médicament :</label>
+    <input type="text" id="nom" name="nom" value="Doliprane">
+
+    <label for="stock">Stock disponible :</label>
+    <input type="number" id="stock" name="stock" value="50">
+
+    <label for="date">Date de péremption :</label>
+    <input type="date" id="date" name="date" value="2025-12-31">
+
+    <button type="submit">Modifier</button>
+  </form>
+
+  <script>
+    document.getElementById("form-modif").addEventListener("submit", function(e) {
+      let nom = document.getElementById("nom").value.trim();
+      let stock = parseInt(document.getElementById("stock").value);
+      let date = new Date(document.getElementById("date").value);
+      let aujourdHui = new Date();
+      aujourdHui.setHours(0, 0, 0, 0);
+
+      if (nom === "") {
+        alert("❌ Le nom du médicament est obligatoire !");
+        e.preventDefault();
+        return;
+      }
+
+      if (isNaN(stock) || stock <= 0) {
+        alert("❌ Le stock doit être un nombre supérieur à 0.");
+        e.preventDefault();
+        return;
+      }
+
+      if (isNaN(date.getTime()) || date <= aujourdHui) {
+        alert("❌ La date de péremption doit être dans le futur.");
+        e.preventDefault();
+        return;
+      }
+
+      alert("✅ Médicament modifié avec succès !");
+    });
+  </script>
+
+</body>
+</html>
