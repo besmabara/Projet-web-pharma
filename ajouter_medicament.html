@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestion de Médicaments - Ajouter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 40px;
+    }
+    h2 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input {
+      width: 300px;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Ajouter un médicament à la pharmacie</h2>
+
+  <form id="form-medicament">
+    <label for="nom">Nom du médicament :</label>
+    <input type="text" id="nom" name="nom">
+
+    <label for="stock">Stock disponible :</label>
+    <input type="number" id="stock" name="stock">
+
+    <label for="date">Date de péremption :</label>
+    <input type="date" id="date" name="date">
+
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <script>
+    document.getElementById("form-medicament").addEventListener("submit", function(e) {
+      let nom = document.getElementById("nom").value.trim();
+      let stock = parseInt(document.getElementById("stock").value);
+      let date = new Date(document.getElementById("date").value);
+      let aujourdHui = new Date();
+      aujourdHui.setHours(0, 0, 0, 0); // ignore les heures
+
+      if (nom === "") {
+        alert("❌ Le nom du médicament est obligatoire !");
+        e.preventDefault();
+        return;
+      }
+
+      if (isNaN(stock) || stock <= 0) {
+        alert("❌ Le stock doit être un nombre positif.");
+        e.preventDefault();
+        return;
+      }
+
+      if (isNaN(date.getTime()) || date <= aujourdHui) {
+        alert("❌ La date de péremption doit être dans le futur.");
+        e.preventDefault();
+        return;
+      }
+
+      alert("✅ Médicament ajouté avec succès !");
+    });
+  </script>
+
+</body>
+</html>
