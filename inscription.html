@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription - Pharmacien</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 250px;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Inscription Pharmacien</h2>
+
+  <form id="signup-form">
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="confirm-password">Confirmer le mot de passe :</label>
+    <input type="password" id="confirm-password" name="confirm-password" required>
+
+    <button type="submit">S'inscrire</button>
+  </form>
+
+  <script>
+    document.getElementById("signup-form").addEventListener("submit", function(e) {
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value;
+      let confirm = document.getElementById("confirm-password").value;
+
+      if (email === "" || !email.includes("@")) {
+        alert("❌ Email invalide !");
+        e.preventDefault();
+        return;
+      }
+
+      if (password.length < 6) {
+        alert("❌ Le mot de passe doit contenir au moins 6 caractères.");
+        e.preventDefault();
+        return;
+      }
+
+      if (password !== confirm) {
+        alert("❌ Les mots de passe ne correspondent pas !");
+        e.preventDefault();
+        return;
+      }
+
+      alert("✅ Inscription réussie !");
+    });
+  </script>
+
+</body>
+</html>
