@@ -2,15 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Connexion - Gestion de Médicaments</title>
+  <title>Connexion</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
       padding: 40px;
-    }
-    h2 {
-      color: #333;
     }
     label {
       display: block;
@@ -50,32 +47,11 @@
 
     <button type="submit">Se connecter</button>
   </form>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script>
-    // Quand l'utilisateur clique sur "Se connecter"
-    document.getElementById("login-form").addEventListener("submit", function(e) {
-      // On récupère ce que l'utilisateur a écrit
-      let email = document.getElementById("email").value.trim();
-      let password = document.getElementById("password").value;
-
-      // Si l'email est vide ou mal écrit
-      if (email === "" || !email.includes("@")) {
-        alert("❌ Email invalide !");
-        e.preventDefault(); // empêche l'envoi
-        return;
-      }
-
-      // Si le mot de passe est trop court
-      if (password.length < 6) {
-        alert("❌ Le mot de passe doit contenir au moins 6 caractères.");
-        e.preventDefault(); // empêche l'envoi
-        return;
-      }
-
-      // Si tout est bon
-      alert("✅ Connexion en cours...");
-    });
-  </script>
+  <!-- ✅ Ici on appelle le fichier JavaScript externe -->
+  <script src="js/validation.js"></script>
 
 </body>
 </html>
+

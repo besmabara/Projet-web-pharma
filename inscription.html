@@ -50,34 +50,9 @@
 
     <button type="submit">S'inscrire</button>
   </form>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script>
-    document.getElementById("signup-form").addEventListener("submit", function(e) {
-      let email = document.getElementById("email").value.trim();
-      let password = document.getElementById("password").value;
-      let confirm = document.getElementById("confirm-password").value;
-
-      if (email === "" || !email.includes("@")) {
-        alert("❌ Email invalide !");
-        e.preventDefault();
-        return;
-      }
-
-      if (password.length < 6) {
-        alert("❌ Le mot de passe doit contenir au moins 6 caractères.");
-        e.preventDefault();
-        return;
-      }
-
-      if (password !== confirm) {
-        alert("❌ Les mots de passe ne correspondent pas !");
-        e.preventDefault();
-        return;
-      }
-
-      alert("✅ Inscription réussie !");
-    });
-  </script>
+<script src="js/validation.js"></script>
 
 </body>
 </html>
