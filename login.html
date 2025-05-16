@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion - Gestion de Médicaments</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+    h2 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 250px;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Connexion Pharmacien</h2>
+
+  <form id="login-form">
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Se connecter</button>
+  </form>
+
+  <script>
+    // Quand l'utilisateur clique sur "Se connecter"
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+      // On récupère ce que l'utilisateur a écrit
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value;
+
+      // Si l'email est vide ou mal écrit
+      if (email === "" || !email.includes("@")) {
+        alert("❌ Email invalide !");
+        e.preventDefault(); // empêche l'envoi
+        return;
+      }
+
+      // Si le mot de passe est trop court
+      if (password.length < 6) {
+        alert("❌ Le mot de passe doit contenir au moins 6 caractères.");
+        e.preventDefault(); // empêche l'envoi
+        return;
+      }
+
+      // Si tout est bon
+      alert("✅ Connexion en cours...");
+    });
+  </script>
+
+</body>
+</html>
